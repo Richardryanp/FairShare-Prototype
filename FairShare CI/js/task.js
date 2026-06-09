@@ -120,25 +120,19 @@ document.addEventListener("DOMContentLoaded", () => {
     tooltip.className = 'cal-tooltip';
     document.body.appendChild(tooltip);
 
-        // Inisialisasi Tanggal Dinamis (Mengikuti Bulan Real-Life Saat Ini)
-    let currentDate = new Date();
-    currentDate.setDate(1); // Set ke tanggal 1 pada bulan berjalan
-    const realToday = new Date(); // Untuk mendeteksi tanggal hari ini
+    // Initial Date Config (June 2026 based on context)
+    let currentDate = new Date(2026, 5, 1); 
+    const realToday = new Date(); // To highlight true current day
 
-    // Format YYYY-MM secara dinamis sesuai bulan ini
-    const curYear = realToday.getFullYear();
-    const curMonth = String(realToday.getMonth() + 1).padStart(2, '0');
-    const dynamicYearMonth = `${curYear}-${curMonth}`;
-
-    // Database Tugas Dinamis (agar tugas sampel otomatis bergeser mengikuti bulan berjalan)
-    const calendarData = {};
-    calendarData[`${dynamicYearMonth}-02`] = [{ title: "Create Group Schema", time: "10:00 AM", dot: "bg-green" }];
-    calendarData[`${dynamicYearMonth}-04`] = [{ title: "Backend API Integration", time: "07:30 PM", dot: "bg-red" }];
-    calendarData[`${dynamicYearMonth}-05`] = [
-        { title: "UI Design Revision", time: "02:00 PM", dot: "bg-yellow" },
-        { title: "Team Sync", time: "04:00 PM", dot: "bg-blue" } 
-    ];
-    calendarData[`${dynamicYearMonth}-08`] = [{ title: "Testing Phase Setup", time: "09:00 AM", dot: "bg-blue" }];
+    // Dummy Task Database (YYYY-MM-DD standard format prevents bugs)
+    const calendarData = {
+        "2026-05-02": [{ title: "Create Group Schema", time: "10:00 AM", dot: "bg-green" }],
+        "2026-05-04": [{ title: "Backend API Integration", time: "07:30 PM", dot: "bg-red" }],
+        "2026-06-13": [
+            { title: "UI Design Revision", time: "02:00 PM", dot: "bg-yellow" }
+        ],
+        "2026-06-20": [{ title: "Testing Phase Setup", time: "09:00 AM", dot: "bg-blue" }]
+    };
 
     function renderCalendar() {
         // Trigger subtle animation
