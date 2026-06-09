@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker & Performance | FairShare</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tracker.css"> <link rel="icon" type="image/x-icon" href="assets/FairShare Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <div class="bg-grid"></div>
+
+    <header class="mobile-header">
+        <div class="logo"><span class="logo-text">FairShare.</span></div>
+        <button class="mobile-menu-btn" aria-label="Open menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/FairShare Logo.png" alt="FairShare Logo" class="logo-img" onerror="this.style.display='none';">
+                    <span class="logo-text">FairShare.</span>
+                </a>
+                <button class="desktop-collapse-btn" id="collapseBtn" aria-label="Toggle Sidebar">
+                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item" title="Dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="create-group.html" class="nav-item" title="Create Group">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span class="nav-text">Create Group</span>
+                </a>
+                <a href="task.html" class="nav-item" title="Task & Assignment">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span class="nav-text">Task & Assignment</span>
+                </a>
+                <a href="tracker.html" class="nav-item active" title="Tracker & Performance">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span class="nav-text">Tracker & Perf.</span>
+                </a>
+                <a href="validation.html" class="nav-item" title="Pending Validation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span class="nav-text">Pending Validation</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="settings.html" class="nav-item" title="Settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3z"></path></svg>
+                    <span class="nav-text">Settings</span>
+                </a>
+                <div class="user-profile">
+                    <div class="avatar" title="Michelle">M</div>
+                    <div class="user-info">
+                        <span class="user-name">Michelle</span>
+                        <span class="user-role">HCI Group 4</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="dashboard-header reveal">
+                <div>
+                    <h1>Team Performance</h1>
+                    <p class="subtitle">Track your team productivity and contribution.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">Export Report</button>
+                </div>
+            </header>
+
+            <section class="summary-grid reveal stagger-1">
+                <div class="stat-card card">
+                    <span class="stat-icon bg-blue-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--status-progress)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span>
+                    <div class="stat-info">
+                        <h3 class="stat-title">Total Tasks</h3>
+                        <div class="stat-value">39</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card card">
+                    <span class="stat-icon bg-green-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--status-done)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                    <div class="stat-info">
+                        <h3 class="stat-title">Completed</h3>
+                        <div class="stat-value">33</div>
+                    </div>
+                </div>
+
+                <div class="stat-card card">
+                    <span class="stat-icon bg-purple-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>
+                    <div class="stat-info">
+                        <h3 class="stat-title">Completion Rate</h3>
+                        <div class="stat-value">85%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card card">
+                    <span class="stat-icon bg-yellow-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--status-warning)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+                    <div class="stat-info">
+                        <h3 class="stat-title">On-Time Rate</h3>
+                        <div class="stat-value">85%</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="performance-layout">
+                
+                <div class="perf-col-left">
+                    <section class="card reveal stagger-2">
+                        <div class="card-header">
+                            <h2>Contribution Tracker</h2>
+                            <p class="muted" style="font-size: 0.85rem;">Based on completed tasks and deadlines met.</p>
+                        </div>
+                        
+                        <div class="contributor-list">
+                            
+                            <div class="contributor-row top-contributor">
+                                <div class="rank">#1</div>
+                                <div class="avatar" >D</div>
+                                <div class="contributor-details">
+                                    <div class="c-header">
+                                        <h4>Darren <span class="badge badge-gold">Top Contributor 🏆</span></h4>
+                                        <span class="c-percent">23%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill fill-gold js-bar" data-width="23%"></div></div>
+                                    <div class="c-stats">
+                                        <span class="stat-badge text-green">✅ 9 tasks completed</span>
+                                        <span class="stat-badge text-blue">⏰ 0 late submissions</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-row">
+                                <div class="rank">#2</div>
+                                <div class="avatar">M</div>
+                                <div class="contributor-details">
+                                    <div class="c-header">
+                                        <h4>Michelle <span class="muted">(You)</span></h4>
+                                        <span class="c-percent">21%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill fill-blue js-bar" data-width="21%"></div></div>
+                                    <div class="c-stats">
+                                        <span class="stat-badge text-green">✅ 8 tasks completed</span>
+                                        <span class="stat-badge text-yellow">⏰ 1 late submission</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-row">
+                                <div class="rank">#3</div>
+                                <div class="avatar">R</div>
+                                <div class="contributor-details">
+                                    <div class="c-header">
+                                        <h4>Richard</h4>
+                                        <span class="c-percent">18%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill fill-blue js-bar" data-width="18%"></div></div>
+                                    <div class="c-stats">
+                                        <span class="stat-badge text-green">✅ 7 tasks completed</span>
+                                        <span class="stat-badge text-yellow">⏰ 1 late submission</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-row">
+                                <div class="rank">#4</div>
+                                <div class="avatar">S</div>
+                                <div class="contributor-details">
+                                    <div class="c-header">
+                                        <h4>Sauky</h4>
+                                        <span class="c-percent">13%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill fill-blue js-bar" data-width="13%"></div></div>
+                                    <div class="c-stats">
+                                        <span class="stat-badge text-green">✅ 5 tasks completed</span>
+                                        <span class="stat-badge text-red">⏰ 2 late submissions</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-row">
+                                <div class="rank">#5</div>
+                                <div class="avatar">W</div>
+                                <div class="contributor-details">
+                                    <div class="c-header">
+                                        <h4>Wilbert</h4>
+                                        <span class="c-percent">10%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill fill-yellow js-bar" data-width="10%"></div></div>
+                                    <div class="c-stats">
+                                        <span class="stat-badge text-green">✅ 4 tasks completed</span>
+                                        <span class="stat-badge text-red">⏰ 2 late submissions</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="perf-col-right">
+                    
+                    <section class="card reveal stagger-3">
+                        <div class="card-header">
+                            <h2>Weekly Progress</h2>
+                        </div>
+                        <div class="chart-container">
+                            <div class="bar-chart">
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="30%" title="3 Tasks"></div>
+                                    <span class="day-label">Mon</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="50%" title="5 Tasks"></div>
+                                    <span class="day-label">Tue</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="80%" title="8 Tasks"></div>
+                                    <span class="day-label">Wed</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="40%" title="4 Tasks"></div>
+                                    <span class="day-label">Thu</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar current-day" data-height="90%" title="9 Tasks"></div>
+                                    <span class="day-label">Fri</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="20%" title="2 Tasks"></div>
+                                    <span class="day-label">Sat</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar js-chart-bar" data-height="10%" title="1 Task"></div>
+                                    <span class="day-label">Sun</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card reveal stagger-4">
+                        <div class="card-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="activity-feed">
+                            <div class="activity-item">
+                                <div class="avatar-xs">D</div>
+                                <div class="activity-content">
+                                    <p><strong>Darren</strong> submitted Task API.</p>
+                                    <span class="activity-time">3 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="avatar-xs">M</div>
+                                <div class="activity-content">
+                                    <p><strong>Michelle</strong> completed UI Design.</p>
+                                    <span class="activity-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="avatar-xs">R</div>
+                                <div class="activity-content">
+                                    <p><strong>Richard</strong> updated validation system.</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="avatar-xs">S</div>
+                                <div class="activity-content">
+                                    <p><strong>Sauky</strong> submitted API documentation.</p>
+                                    <span class="activity-time">1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="avatar-xs">W</div>
+                                <div class="activity-content">
+                                    <p><strong>Wilbert</strong> completed persona research.</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/tracker.js"></script>
+</body>
+</html>

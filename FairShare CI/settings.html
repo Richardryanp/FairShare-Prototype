@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | FairShare</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="icon" type="image/x-icon" href="assets/FairShare Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <div class="bg-grid"></div>
+
+    <header class="mobile-header">
+        <div class="logo"><span class="logo-text">FairShare.</span></div>
+        <button class="mobile-menu-btn" aria-label="Open menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/FairShare Logo.png" alt="FairShare Logo" class="logo-img" onerror="this.style.display='none';">
+                    <span class="logo-text">FairShare.</span>
+                </a>
+                <button class="desktop-collapse-btn" id="collapseBtn" aria-label="Toggle Sidebar">
+                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item" title="Dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="create-group.html" class="nav-item" title="Create Group">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span class="nav-text">Create Group</span>
+                </a>
+                <a href="tasks.html" class="nav-item" title="Task & Assignment">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span class="nav-text">Task & Assignment</span>
+                </a>
+                <a href="tracker.html" class="nav-item" title="Tracker & Performance">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span class="nav-text">Tracker & Perf.</span>
+                </a>
+                <a href="validation.html" class="nav-item" title="Pending Validation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span class="nav-text">Pending Validation</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="settings.html" class="nav-item active" title="Settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3z"></path></svg>
+                    <span class="nav-text">Settings</span>
+                </a>
+                <div class="user-profile">
+                    <div class="avatar" title="Michelle">M</div>
+                    <div class="user-info">
+                        <span class="user-name">Michelle</span>
+                        <span class="user-role">HCI Group 4</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Settings</h1>
+                <p class="subtitle">Manage your personal profile, group details, and preferences.</p>
+            </header>
+
+            <div class="settings-container">
+                
+                <aside class="settings-nav">
+                    <button class="settings-tab active" data-target="profile">Profile</button>
+                    <button class="settings-tab" data-target="account">Account Info</button>
+                    <button class="settings-tab" data-target="preferences">Preferences</button>
+                    <button class="settings-tab" data-target="appearance">Appearance</button>
+                    <button class="settings-tab" data-target="security">Security</button>
+                </aside>
+
+                <div class="settings-content">
+                    
+                    <!-- 1. PROFILE SECTION -->
+                    <section id="profile" class="settings-section active">
+                        <h2>Personal Profile</h2>
+                        <div class="profile-pic-area">
+                            <div class="avatar-lg" id="profile-avatar">M</div>
+                            <button class="btn-text">Change Picture</button>
+                        </div>
+                        
+                        <div class="section-divider"></div>
+
+                        <form class="settings-form" id="form-profile">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-input" id="profile-name" value="Michelle" autocomplete="off">
+                                <span class="helper-text">This will be visible to your team.</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-input" id="profile-email" value="michelle@binus.ac.id" autocomplete="off">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary" id="btn-save-profile" disabled>Save Changes</button>
+                                <span class="last-updated hidden" id="last-updated-profile">Last updated: just now</span>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- 2. ACCOUNT / GROUP SECTION -->
+                    <section id="account" class="settings-section">
+                        <h2>Group Information</h2>
+                        <p class="muted-text" style="margin-bottom: 24px;">This information is managed by your workspace.</p>
+                        <div class="section-divider"></div>
+                        <div class="info-card">
+                            <div class="info-row">
+                                <span class="info-label">Group Name</span>
+                                <span class="info-value">CI Group 4</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Your Role</span>
+                                <span class="info-value">Project Member</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Total Members</span>
+                                <span class="info-value">5 Members</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. PREFERENCES SECTION -->
+                    <div id="preferences" class="settings-section">
+                        <h2>Preferences</h2>
+                        <div class="section-divider"></div>
+                        <div class="toggle-list">
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <label>Push Notifications</label>
+                                    <p>Receive updates when a task status changes.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <label>Task Reminders</label>
+                                    <p>Get alerted when a deadline is approaching.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <section id="appearance" class="settings-section">
+                        <h2>Appearance</h2>
+                        <div class="section-divider"></div>
+                        <div class="toggle-list">
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <label>Dark Mode</label>
+                                    <p>Switch between light and dark theme templates.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="darkModeToggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. SECURITY SECTION -->
+                    <section id="security" class="settings-section">
+                        <h2>Security</h2>
+                        <div class="section-divider"></div>
+                        <form class="settings-form" id="form-security">
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" class="form-input" id="new-password" placeholder="Enter new password">
+                                <span class="error-text hidden" id="err-new-pwd">Password must be at least 6 characters</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-input" id="confirm-password" placeholder="Confirm new password">
+                                <span class="error-text hidden" id="err-conf-pwd">Passwords do not match</span>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary" id="btn-update-pwd" disabled>Update Password</button>
+                                <span class="last-updated hidden" id="last-updated-security">Last updated: just now</span>
+                            </div>
+                        </form>
+                    </section>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+:root {
+    --bg-primary: #F8FAFC;
+    --bg-elevated: #FFFFFF;
+    --card-bg: rgba(255, 255, 255, 0.92);
+    
+    --border-subtle: #E2E8F0;
+    --border-hover: #CBD5E1;
+    --border-focus: rgba(15, 23, 42, 0.35);
+    
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    
+    --btn-primary-bg: #0F172A;
+    --btn-primary-text: #FFFFFF;
+    --btn-primary-hover: #1E293B;
+    --btn-secondary-bg: #FFFFFF;
+    --btn-secondary-border: #CBD5E1;
+    --btn-secondary-hover: #F1F5F9;
+
+    --status-done: #10B981;
+    --status-progress: #3B82F6;
+    --status-warning: #F59E0B;
+    --status-late: #EF4444;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --space-sm: 12px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.2s ease-in-out;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* --- FIXED: Body width & overflow untuk cegah horizontal scroll --- */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-grid {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px; z-index: -1; pointer-events: none;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--space-sm); }
+h3 { font-size: 1rem; font-weight: 600; }
+h4 { font-size: 0.95rem; font-weight: 600; }
+p, span { font-size: 0.9rem; }
+.subtitle { color: var(--text-secondary); margin-top: 4px; }
+.muted { color: var(--text-secondary); }
+
+.text-green { color: var(--status-done); }
+.text-blue { color: var(--status-progress); }
+.text-yellow { color: var(--status-warning); }
+.text-red { color: var(--status-late); }
+
+.app-container { display: flex; min-height: 100vh; width: 100%; }
+
+/* --- 1. SIDEBAR DYNAMIC LAYOUT (FIXED UNTUK MOBILE) --- */
+.sidebar {
+    width: 240px;
+    background-color: var(--bg-elevated);
+    border-right: 1px solid var(--border-subtle);
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; left: 0; z-index: 50;
+    height: 100dvh; /* FIX: Pakai 100dvh biar gak ketutupan address bar HP */
+    transition: width 0.3s var(--ease-apple), transform 0.3s var(--ease-apple);
+    overflow: hidden; 
+}
+
+body.sidebar-collapsed .sidebar { width: 72px; }
+body.sidebar-collapsed .logo-text,
+body.sidebar-collapsed .nav-text,
+body.sidebar-collapsed .user-info {
+    opacity: 0; width: 0; display: none; 
+}
+body.sidebar-collapsed .sidebar-header { flex-direction: column; gap: 16px; justify-content: center; padding: 16px 8px; }
+body.sidebar-collapsed .nav-item { justify-content: center; padding: 12px; }
+body.sidebar-collapsed .user-profile { justify-content: center; }
+
+.sidebar-header { padding: var(--space-md); display: flex; justify-content: space-between; align-items: center; }
+.logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary); }
+.logo-img { height: 26px; width: 26px; object-fit: contain; }
+.logo-text { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.04em; }
+
+.desktop-collapse-btn {
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(15, 23, 42, 0.03); border: 1px solid var(--border-subtle); 
+    color: var(--text-secondary); cursor: pointer; 
+    width: 32px; height: 32px; border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+.desktop-collapse-btn:hover { color: var(--text-primary); background-color: rgba(15, 23, 42, 0.08); border-color: var(--border-hover); }
+.close-sidebar-btn { display: none; background: none; border: none; color: var(--text-secondary); cursor: pointer; }
+
+/* FIX: Area link menu tengah yang bisa di-scroll kalau menunya kebanyakan */
+/* --- FIXED: Rapatkan Navigasi (Buang flex: 1 yang bikin melar) --- */
+.sidebar-nav { 
+    flex: initial; /* Ganti dari flex: 1 biar gak rakus ruang */
+    padding: 0 var(--space-sm); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+    margin-top: 1rem; 
+    
+    /* Tetap bisa scroll HANYA kalau menunya nanti nambah banyak banget */
+    overflow-y: auto; 
+    scrollbar-width: none; 
+}
+
+/* --- FIXED: Paksa Footer Stay di Bawah Layar dengan Rapi --- */
+.sidebar-footer { 
+    margin-top: auto; /* INI KUNCINYA: Otomatis dorong footer ke paling bawah layar */
+    padding: var(--space-md); 
+    border-top: 1px solid var(--border-subtle); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+    flex-shrink: 0; /* Jangan biarin footer gepeng atau kepotong */
+    
+    /* Jarak aman buat HP berponi / iPhone */
+    padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom));
+}
+
+.nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px 10px 9px;
+    border-radius: var(--radius-sm); border-left: 3px solid transparent;
+    color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    transition: all var(--transition-fast); white-space: nowrap;
+}
+.nav-item:hover { color: var(--text-primary); background-color: rgba(15, 23, 42, 0.03); }
+.nav-item.active { color: var(--text-primary); background-color: rgba(15, 23, 42, 0.06); border-left-color: var(--text-primary); }
+.nav-item.active svg { color: var(--text-primary); }
+
+/* FIX: Bagian Footer tempat Settings & Profile agar tidak kepotong */
+.sidebar-footer { 
+    padding: var(--space-md); border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1rem; 
+    flex-shrink: 0; 
+    margin-bottom: env(safe-area-inset-bottom);
+}
+.user-profile { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background-color: #76d9f1; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem; flex-shrink: 0;}
+.avatar-sm { width: 28px; height: 28px; border-radius: 50%; background-color: #76d9f1; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.75rem; border: 1px solid var(--border-subtle); flex-shrink: 0;}
+
+.user-info { display: flex; flex-direction: column; white-space: nowrap; }
+.user-name { font-weight: 600; font-size: 0.9rem; }
+.user-role { font-size: 0.75rem; color: var(--text-secondary); }
+
+/* --- 2. MAIN CONTENT AUTO-EXPAND --- */
+/* --- FIXED: Width logic and Ultrawide Centering Magic --- */
+.main-content {
+    flex: 1; 
+    margin-left: 240px; 
+    padding: var(--space-lg) var(--space-md);
+    width: calc(100% - 240px); /* Pastikan gak overflow dari lebar sisa setelah sidebar */
+    transition: margin-left 0.3s var(--ease-apple), width 0.3s var(--ease-apple), padding 0.3s var(--ease-apple); 
+}
+
+body.sidebar-collapsed .main-content { 
+    margin-left: 72px; 
+    width: calc(100% - 72px);
+}
+
+.dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-lg); }
+.title-row { display: flex; align-items: center; gap: 12px; }
+.badge-focus { background: rgba(15, 23, 42, 0.08); color: var(--text-primary); border: 1px solid rgba(15, 23, 42, 0.16); }
+
+/* Base Card Style */
+.card {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    transition: transform 0.3s var(--ease-apple), border-color 0.3s var(--ease-apple), box-shadow 0.3s var(--ease-apple);
+}
+.card:hover { transform: translateY(-2px); border-color: var(--border-hover); box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08); }
+.card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); }
+.view-all { font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; transition: var(--transition-fast); }
+.view-all:hover { color: var(--text-primary); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all var(--transition-fast); }
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.85rem; }
+.btn-primary { background-color: var(--btn-primary-bg); color: var(--btn-primary-text); border: none; box-shadow: inset 0 1px 0 rgba(15, 23, 42, 0.16); }
+.btn-primary:hover { background-color: var(--btn-primary-hover); transform: translateY(-1px); }
+.btn-secondary { background-color: var(--btn-secondary-bg); color: var(--text-primary); border: 1px solid var(--btn-secondary-border); padding: 15px; }
+.btn-secondary:hover { background-color: var(--btn-secondary-hover); }
+.header-actions { display: flex; gap: 12px; }
+
+/* Quick Stats */
+.quick-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-md); }
+.stat-card { padding: 1.25rem; display: flex; flex-direction: column; gap: 6px; }
+.stat-title { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+.stat-value { font-size: 1.85rem; font-weight: 700; line-height: 1; }
+.stat-footer { font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px; }
+
+.dashboard-grid { display: grid; grid-template-columns: 3fr 2fr; gap: var(--space-md); }
+.grid-col-left, .grid-col-right { display: flex; flex-direction: column; gap: var(--space-md); }
+
+/* --- 3. REFINED PRIORITY TASKS --- */
+.task-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: var(--space-md); }
+.task-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; border-radius: var(--radius-md); background: rgba(15, 23, 42, 0.02); 
+    border: 1px solid var(--border-subtle); border-left: 4px solid transparent;
+    transition: all 0.3s ease; text-decoration: none; color: inherit;
+}
+/* Priority Categorization */
+.task-red { border-left-color: var(--status-late); }
+.task-yellow { border-left-color: var(--status-warning); }
+.task-blue { border-left-color: var(--status-progress); }
+
+.task-item:hover { background: rgba(15, 23, 42, 0.05); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04); }
+
+.task-info { display: flex; flex-direction: column; gap: 4px; }
+.task-title { font-size: 0.95rem; font-weight: 500; }
+.task-meta { font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.task-actions { display: flex; align-items: center; gap: 16px; }
+
+/* Badges */
+.badge { padding: 4px 10px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.badge-done { background: rgba(16, 185, 129, 0.1); color: var(--status-done); border: 1px solid rgba(16, 185, 129, 0.2); }
+.badge-late { background: rgba(239, 68, 68, 0.1); color: var(--status-late); border: 1px solid rgba(239, 68, 68, 0.2); }
+.badge-warning { background: rgba(245, 158, 11, 0.1); color: var(--status-warning); border: 1px solid rgba(245, 158, 11, 0.2); }
+.badge-progress { background: rgba(59, 130, 246, 0.1); color: var(--status-progress); border: 1px solid rgba(59, 130, 246, 0.2); }
+
+/* Quick Add UX */
+.quick-add { display: flex; gap: 12px; }
+.quick-add-input {
+    flex: 1; background: var(--bg-primary); border: 1px solid var(--border-subtle); color: var(--text-primary);
+    padding: 0.65rem 1rem; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.9rem; outline: none; transition: all var(--transition-fast);
+}
+.quick-add-input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08); }
+
+/* Upcoming Deadlines (3 items) */
+.deadline-list { display: flex; flex-direction: column; gap: 12px; }
+.deadline-item { 
+    display: flex; align-items: center; gap: 16px; padding: 12px; 
+    border-radius: var(--radius-md); background: rgba(15, 23, 42, 0.01); 
+    border: 1px solid var(--border-subtle); transition: background var(--transition-fast);
+}
+.deadline-item:hover { background: rgba(15, 23, 42, 0.03); }
+.date-box { 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    background: var(--bg-elevated); padding: 8px; border-radius: var(--radius-sm); 
+    min-width: 60px; border: 1px solid var(--border-subtle); 
+}
+/* --- Perbaikan Target Warna Date Box (Tanggal yang Berwarna) --- */
+.date-box .month { 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    letter-spacing: 1px; 
+    color: var(--text-secondary); /* Bulan dibuat muted (abu-abu) agar fokus ke tanggal */
+}
+
+.date-box .day { 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    line-height: 1; 
+}
+
+/* Pindahan logic warna: Sekarang menargetkan .day (Angka Tanggal) */
+.date-box.box-yellow .day { color: var(--status-warning); }
+.date-box.box-blue .day   { color: var(--status-progress); }
+.date-box.box-default .day { color: var(--text-primary); }
+.deadline-info h4 { margin-bottom: 2px; font-size: 0.95rem; }
+
+/* Contributor Tracker Polish */
+.contributor-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.contributor-item { display: flex; flex-direction: column; gap: 10px; }
+.contributor-main { display: flex; align-items: center; gap: 12px; }
+.contributor-info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.contributor-percent { font-size: 0.9rem; font-weight: 600; width: 36px; text-align: right; }
+.progress-bar { width: 100%; height: 6px; background: rgba(15, 23, 42, 0.05); border-radius: 100px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 100px; transition: width 1s var(--ease-apple); }
+.fill-blue { background: var(--status-progress); }
+
+/* Improved User Stats Spacing */
+.contributor-breakdown { display: flex; gap: 10px; margin-left: 48px; flex-wrap: wrap; }
+.stat-badge { font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.03); padding: 4px 10px; border-radius: var(--radius-sm); }
+.stat-badge.late { color: var(--status-late); background: rgba(239, 68, 68, 0.1); }
+
+/* Refined Activity Log */
+.activity-feed { display: flex; flex-direction: column; gap: 1.5rem; position: relative; }
+.activity-feed::before { 
+    content: ''; position: absolute; top: 10px; bottom: 10px; left: 14px; 
+    width: 2px; background: var(--border-subtle); z-index: 0; 
+}
+.activity-item { display: flex; gap: 16px; position: relative; z-index: 1; align-items: flex-start; }
+.activity-content { flex: 1; display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+.activity-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
+.activity-content strong { color: var(--text-primary); font-weight: 500; }
+.activity-time { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.7; margin-top: 2px; }
+
+/* Responsive */
+.mobile-header { display: none; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--bg-elevated); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 40; }
+.mobile-menu-btn { background: none; border: none; color: var(--text-primary); cursor: pointer; }
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.18); backdrop-filter: blur(4px); z-index: 45; opacity: 0; transition: opacity var(--transition-fast); }
+
+/* Smoother Reveal Animations */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.4s var(--ease-apple), transform 0.4s var(--ease-apple); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* --- ULTRAWIDE MONITOR FIX --- */
+@media (min-width: 1440px) {
+    .main-content {
+        /* Otomatis membagi sisa layar jadi padding di kiri-kanan, bikin konten rapi di tengah */
+        padding-left: max(var(--space-md), calc((100vw - 240px - 1100px) / 2));
+        padding-right: max(var(--space-md), calc((100vw - 240px - 1100px) / 2));
+    }
+    body.sidebar-collapsed .main-content {
+        padding-left: max(var(--space-md), calc((100vw - 72px - 1100px) / 2));
+        padding-right: max(var(--space-md), calc((100vw - 72px - 1100px) / 2));
+    }
+}
+
+/* --- TABLET FIX --- */
+@media (max-width: 1024px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+/* --- MOBILE LAYOUT FIX --- */
+@media (max-width: 768px) {
+    .sidebar { transform: translateX(-100%); width: 280px !important; } 
+    .sidebar.open { transform: translateX(0); }
+    .desktop-collapse-btn { display: none; }
+    .close-sidebar-btn { display: block; }
+    .sidebar-overlay.active { display: block; opacity: 1; }
+    
+    .main-content, body.sidebar-collapsed .main-content { 
+        margin-left: 0; 
+        width: 100%;
+        padding: var(--space-md); 
+    }
+    .mobile-header { display: flex; }
+    
+    .dashboard-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .header-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+    .quick-stats { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Perbaikan Task List biar ga bertumpukan di HP */
+    .task-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .task-actions { width: 100%; justify-content: flex-start; flex-direction: row; flex-wrap: wrap; }
+    
+    /* Perbaikan Form Tambah Task di HP */
+    .quick-add { flex-direction: column; }
+    .quick-add .btn { width: 100%; }
+}
+
+/* --- Tambahan Fitur Smart Eraser Button (Monochromatic Theme) --- */
+.task-delete-btn {
+    background: transparent;
+    border: none;
+    color: #6B7280;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.task-delete-btn:hover {
+    color: #0F172A;
+    background-color: rgba(15, 23, 42, 0.08);
+}
+
+/* --- Tambahan Dashboard Header Improvement Layout --- */
+.dashboard-header {
+    position: relative;
+    z-index: 1010; /* Menjamin seluruh header berada di atas layer widget bento box */
+    overflow: visible !important; /* Mencegah pemotongan (clipping) kartu absolute dropdown */
+}
+
+.header-date {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 12px;
+    border-left: 1px solid var(--border-subtle);
+    padding-left: 16px;
+}
+
+.notification-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notification-trigger {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.notification-trigger:hover {
+    color: var(--text-primary);
+    background-color: rgba(15, 23, 42, 0.05);
+}
+
+.noti-badge-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--status-late);
+    border-radius: 50%;
+    transition: opacity 0.2s;
+}
+
+.header-profile-status {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Mengubah profile trigger menjadi button semantik agar bebas konflik click */
+.profile-trigger-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.header-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--border-hover);
+    color: #0F172A;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-subtle);
+    transition: border-color 0.2s;
+}
+
+.profile-trigger-btn:hover .header-avatar {
+    border-color: var(--border-focus);
+}
+
+.fake-online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--status-done);
+    border: 2px solid var(--bg-primary);
+    border-radius: 50%;
+}
+
+/* --- QUICK STATS POLISH UPGRADE --- */
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.stat-card.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 125px;
+    padding: 1.25rem;
+    transition: transform 0.3s var(--ease-apple), border-color 0.3s var(--ease-apple), box-shadow 0.3s var(--ease-apple);
+}
+
+.stat-card.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.stat-support-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.text-dim-green { color: rgba(16, 185, 129, 0.85); }
+.text-dim-blue { color: rgba(59, 130, 246, 0.85); }
+.text-dim-yellow { color: rgba(245, 158, 11, 0.85); }
+.text-dim-red { color: rgba(239, 68, 68, 0.85); }
+
+/* --- CONTRIBUTOR TRACKER IMPROVEMENT STYLE --- */
+.contributor-info {
+    flex: 1;
+}
+
+.contributor-main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.contributor-status-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.tag-excellent {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--status-done);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.tag-active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--status-progress);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.tag-review {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--status-late);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.progress-fill {
+    transform-origin: left;
+    animation: loadProgressFill 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loadProgressFill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* --- RECENT ACTIVITY UPGRADE STYLE --- */
+.activity-item {
+    transition: background-color 0.25s var(--ease-apple), transform 0.25s var(--ease-apple);
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm, 8px);
+}
+
+.activity-item:hover {
+    background-color: rgba(15, 23, 42, 0.04);
+    transform: translateX(4px);
+}
+
+/* --- HEADER NEW TASK REDIRECTION HIGHLIGHT ANIMATION --- */
+.quick-add-input.highlight-focus {
+    border-color: #0F172A !important;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* --- SAAS PREMIUM FLOATING DROPDOWN CARD SYSTEM --- */
+.header-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 280px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    padding: 8px;
+    z-index: 1050; /* Z-Index super tinggi agar melayang di atas konten lain */
+    display: none; /* Dikontrol murni via Class Toggle di JS */
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Trigger pembukaan berbasis state class aktif */
+.header-dropdown.active {
+    display: flex;
+    animation: premiumDropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes premiumDropdownIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdown-caption {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    padding: 8px 10px 4px 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dropdown-link-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 12px;
+    transition: background-color 0.2s;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-link-item:hover {
+    background-color: rgba(15, 23, 42, 0.05);
+}
+
+.dropdown-link-item p { margin: 0; font-size: 12px; line-height: 1.4; color: #0F172A; text-align: left; }
+.dropdown-link-item span { color: var(--status-progress); font-weight: 600; }
+.dropdown-link-item small { font-size: 10px; color: var(--text-secondary); margin-top: 3px; }
+.dropdown-divider { height: 1px; background-color: var(--border-subtle); margin: 4px 6px; }
+
+/* --- FLOATING TOAST NOTIFICATION STACKER --- */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-notification {
+    background: #FFFFFF;
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-sm, 8px);
+    padding: 12px 16px;
+    color: #0F172A;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.16);
+    animation: toastSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.toast-notification.fade-out {
+    animation: toastFadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastFadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(12px); }
+}
+
+/* ==========================================================================
+   FIX: Perbaikan Sidebar Collapse untuk Menu Settings & Footer (FairShare UI)
+   ========================================================================== */
+
+/* 1. Sesuaikan padding footer saat collapse agar icon & avatar presisi di tengah */
+body.sidebar-collapsed .sidebar-footer {
+    padding: 16px 8px !important; 
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* 2. Sembunyikan semua teks/elemen di dalam .nav-item selain icon SVG */
+body.sidebar-collapsed .nav-item > *:not(svg):not(path) {
+    display: none !important;
+}
+
+/* 3. Bersihkan sisa layout/teks tambahan di footer agar tidak bocor keluar monitor */
+body.sidebar-collapsed .sidebar-footer > *:not(.user-profile):not(.nav-item) {
+    display: none !important;
+}
+
+/* --- UPGRADE: Upcoming Deadlines Component (Polished) --- */
+.deadline-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+.deadline-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    padding: 12px; 
+    border-radius: var(--radius-md); 
+    background: rgba(15, 23, 42, 0.01); 
+    border: 1px solid var(--border-subtle); 
+    /* IMPROV: Animasi transisi yang lebih smooth */
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* IMPROV: Hover effect ala Linear / GitHub UI */
+.deadline-item:hover { 
+    background: rgba(15, 23, 42, 0.03); 
+    border-color: var(--border-hover);
+    transform: translateX(4px); /* Efek bergeser sedikit ke kanan pas di-hover */
+}
+
+.date-box { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    background: var(--bg-elevated); 
+    padding: 8px; 
+    border-radius: var(--radius-sm); 
+    min-width: 60px; 
+    height: 58px;
+    border: 1px solid var(--border-subtle); 
+}
+
+/* IMPROV: Teks Bulan dibuat seragam & muted (text-secondary) agar mata fokus ke tanggal */
+.date-box .month { 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    letter-spacing: 1px; 
+    color: var(--text-secondary); 
+    text-transform: uppercase;
+}
+
+.date-box .day { 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    line-height: 1; 
+    color: var(--text-primary); 
+}
+
+/* FIX: Sekarang Tanggal (.day) yang mengambil warna status, bukan Bulan (.month) */
+.date-box.box-yellow .day { color: var(--status-warning); }
+.date-box.box-blue .day   { color: color-mix(in srgb, var(--status-progress) 85%, #0F172A); } /* Boost kontras dikit */
+.date-box.box-red .day    { color: var(--status-late); } /* FIX: Menambahkan handling status Overdue */
+.date-box.box-default .day { color: var(--text-primary); }
+
+.deadline-info {
+    flex: 1;
+    min-width: 0; /* FIX: Kunci flexbox biar fungsi ellipsis di bawah jalan */
+}
+
+.deadline-info h4 { 
+    margin-bottom: 2px; 
+    font-size: 0.95rem; 
+    /* FIX: Proteksi text-overflow agar tidak merusak baris layout */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deadline-info p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* === FairShare Light Mode Final Overrides === */
+.logo-img,
+.brand-logo {
+    display: none !important;
+}
+.logo-text {
+    color: var(--text-primary, #0F172A) !important;
+}
+.btn-primary,
+button.btn-primary,
+.submit-btn,
+.primary-btn {
+    background-color: var(--btn-primary-bg, var(--accent-brand, #0F172A)) !important;
+    color: var(--btn-primary-text, #FFFFFF) !important;
+    border-color: var(--btn-primary-bg, var(--accent-brand, #0F172A)) !important;
+}
+.btn-primary:hover,
+button.btn-primary:hover,
+.submit-btn:hover,
+.primary-btn:hover {
+    background-color: var(--btn-primary-hover, var(--accent-brand-hover, #1E293B)) !important;
+    color: #FFFFFF !important;
+}
+.card,
+.floating-card-inner,
+.sidebar,
+.mobile-header,
+.settings-content,
+.validation-card,
+.task-card,
+.stat-card,
+.create-form {
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+input,
+textarea,
+select {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+}
+input::placeholder,
+textarea::placeholder {
+    color: #94A3B8 !important;
+}

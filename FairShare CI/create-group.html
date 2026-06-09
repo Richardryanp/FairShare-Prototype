@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group | FairShare</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/create-group.css"> 
+    <link rel="icon" type="image/x-icon" href="assets/FairShare Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <div class="bg-grid"></div>
+
+    <header class="mobile-header">
+        <div class="logo"><span class="logo-text">FairShare.</span></div>
+        <button class="mobile-menu-btn" aria-label="Open menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/FairShare Logo.png" alt="FairShare Logo" class="logo-img" onerror="this.style.display='none';">
+                    <span class="logo-text">FairShare.</span>
+                </a>
+                <button class="desktop-collapse-btn" id="collapseBtn" aria-label="Toggle Sidebar">
+                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item" title="Dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <!-- ACTIVE PAGE -->
+                <a href="create-group.html" class="nav-item active" title="Create Group">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span class="nav-text">Create Group</span>
+                </a>
+                <a href="task.html" class="nav-item" title="Task & Assignment">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span class="nav-text">Task & Assignment</span>
+                </a>
+                <a href="tracker.html" class="nav-item" title="Tracker & Performance">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span class="nav-text">Tracker & Perf.</span>
+                </a>
+                <a href="settings.html" class="nav-item" title="Pending Validation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span class="nav-text">Pending Validation</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item" title="Settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3z"></path></svg>
+                    <span class="nav-text">Settings</span>
+                </a>
+                <div class="user-profile">
+                    <div class="avatar" title="Michelle">M</div>
+                    <div class="user-info">
+                        <span class="user-name">Michelle</span>
+                        <span class="user-role">HCI Group 4</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <div class="form-wrapper">
+                
+                <header class="form-header fade-up-anim" style="animation-delay: 0.1s;">
+                    <h1>Create a New Group</h1>
+                    <p class="subtitle">Set up your workspace and invite your team to start collaborating.</p>
+                </header>
+
+                <form id="createGroupForm" class="create-form card fade-up-anim" style="animation-delay: 0.2s;">
+                    
+                    <!-- Group Icon -->
+                    <div class="form-section icon-section">
+                        <div class="icon-upload-circle" id="iconUploadBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        </div>
+                        <div class="icon-text">
+                            <h4>Group Icon</h4>
+                            <p class="muted">Optional. Recommended 256x256px.</p>
+                        </div>
+                    </div>
+
+                    <!-- Core Details -->
+                    <div class="form-section">
+                        <label for="groupName" class="label-large">Group Name <span class="text-red">*</span></label>
+                        <input type="text" id="groupName" class="form-input input-lg" placeholder="Give your group a clear, recognizable name" required autocomplete="off">
+                        <span class="helper-text">This will be visible to everyone on your team.</span>
+                    </div>
+
+                    <div class="form-section">
+                        <label for="groupDesc">Description <span class="muted">(Optional)</span></label>
+                        <textarea id="groupDesc" class="form-input" rows="3" placeholder="Briefly describe the purpose of this group..."></textarea>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Invite Members -->
+                    <div class="form-section">
+                        <label class="label-large">Invite Members</label>
+                        <p class="muted" style="margin-bottom: 8px; font-size: 0.85rem;">Add teammates via email or username.</p>
+                        
+                        <div class="invite-row">
+                            <input type="text" id="memberInput" class="form-input" placeholder="e.g. rafi@campus.edu" autocomplete="off">
+                            <div class="select-wrapper">
+                                <select id="memberRole" class="form-select">
+                                    <option value="Member">Member</option>
+                                    <option value="Leader">Leader</option>
+                                </select>
+                                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                            <button type="button" id="addMemberBtn" class="btn btn-secondary">Add</button>
+                        </div>
+                        
+                        <!-- Dynamic List -->
+                        <div id="membersList" class="members-list">
+                            <!-- Creator stays pinned -->
+                            <div class="member-chip is-creator">
+                                <div class="avatar-sm">M</div>
+                                <div class="chip-info">
+                                    <span class="chip-name">Michelle (You)</span>
+                                    <span class="chip-role muted">Creator / Leader</span>
+                                </div>
+                            </div>
+                            <!-- Empty state text -->
+                            <div id="emptyMembersText" class="empty-members-text">
+                                No additional members added yet.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" style="margin-top: 8px;">
+                        <label>Invite via Link <span class="muted">(Optional)</span></label>
+                        <div class="invite-link-row">
+                            <input type="text" id="inviteLinkInput" class="form-input link-input" value="https://fairshare.app/join/grp_8x92ndQ" readonly>
+                            <button type="button" id="copyLinkBtn" class="btn btn-secondary btn-icon-text">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Submit Action -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+                        <button type="submit" id="submitGroupBtn" class="btn btn-primary btn-lg" disabled>Create Group</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Success Toast (Hidden by default) -->
+    <div id="successToast" class="toast hidden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <span>Creating your group...</span>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/create-group.js"></script>
+</body>
+</html>

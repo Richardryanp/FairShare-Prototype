@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairShare | Sanity for Student Group Projects</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/FairShare Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <!-- Premium Vercel-style Depth Layer -->
+    <div class="bg-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <!-- Floating Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/FairShare Logo.png" alt="FairShare Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="logo-text">FairShare.</span>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-secondary btn-sm">Log in</a>
+                    <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero reveal">
+        <div class="hero-content">
+            <h1 class="hero-title" aria-label="Group projects shouldn’t feel this chaotic.">
+                <span class="typed-text"></span><span class="cursor">|</span>
+            </h1>
+            <p class="hero-subtitle">The collaborative workspace built for students. Organize assignments, track true contributions, and cross the finish line together without the stress.</p>
+            <div class="hero-actions">
+                <a href="signup.html" class="btn btn-primary">Start using FairShare</a>
+               
+            </div>
+        </div>
+        <div class="hero-visual-wrapper reveal stagger">
+            <div class="hero-visual">
+                <img src="assets/Grafis Mockup FairShare.png" alt="FairShare App Interface" class="mockup-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- The Problem Section -->
+    <section class="problem reveal" id="problem">
+        <div class="section-header">
+            <h2>The reality of student teamwork</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M4 6h16" />
+                        <path d="M4 10h16" />
+                        <path d="M4 14h8" />
+                        <circle cx="19" cy="17" r="2" />
+                    </svg>
+                </div>
+                <h3>Tasks scattered everywhere</h3>
+                <p>WhatsApp, Google Docs, Notion... trying to find out who is doing what takes longer than the actual work.</p>
+            </div>
+            <div class="card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                        <path d="M5 22v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" />
+                    </svg>
+                </div>
+                <h3>No clear responsibility</h3>
+                <p>The classic "I thought you were doing that" problem resulting in unfair workloads.</p>
+            </div>
+            <div class="card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="8" />
+                        <path d="M12 8v4l3 2" />
+                    </svg>
+                </div>
+                <h3>Missed deadlines</h3>
+                <p>Last-minute scrambling the night before submission because progress wasn't tracked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution Section -->
+    <section class="solution reveal" id="solution">
+        <div class="solution-container card">
+            <div class="solution-visual reveal stagger">
+                <img src="assets/Grafis meet FairShare.png" alt="Meet FairShare" class="solution-img">
+            </div>
+            <div class="solution-content reveal stagger">
+                <h2>Meet FairShare.</h2>
+                <p class="lead-text">We built FairShare to bring transparency and accountability to group assignments, so everyone does their fair share.</p>
+                <ul class="feature-bullets">
+                    <li>
+                        <strong>Organize tasks centrally</strong>
+                        <span>Break down the syllabus into manageable chunks.</span>
+                    </li>
+                    <li>
+                        <strong>Track real progress</strong>
+                        <span>See exactly who is working on what in real-time.</span>
+                    </li>
+                    <li>
+                        <strong>Collaborate effortlessly</strong>
+                        <span>Keep all project files and discussions tied to specific tasks.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features reveal" id="features">
+        <div class="section-header">
+            <h2>Everything you need to ace the project</h2>
+        </div>
+        <div class="grid-2x2">
+            <div class="card feature-card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M4 10h16" />
+                        <path d="M10 4v16" />
+                    </svg>
+                </div>
+                <h3>Visual Task Boards</h3>
+                <p>Drag and drop tasks from 'To Do' to 'Done'. Simple, satisfying, and clear.</p>
+            </div>
+            <div class="card feature-card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M6 19V10" />
+                        <path d="M12 19V4" />
+                        <path d="M18 19V14" />
+                        <path d="M4 22h16" />
+                    </svg>
+                </div>
+                <h3>Contribution Tracking</h3>
+                <p>Automatically visualize who contributed what to ensure fair grading and peer reviews.</p>
+            </div>
+            <div class="card feature-card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M12 2l7 4v6c0 5-3.58 9.74-7 11-3.42-1.26-7-6-7-11V6l7-4z" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+                </div>
+                <h3>Task Validation</h3>
+                <p>Peer-review system built-in. Group members can validate effort before a task is officially closed.</p>
+            </div>
+            <div class="card feature-card reveal stagger">
+                <div class="card-icon-wrapper">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M18 15v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                </div>
+                <h3>Deadline Alerts</h3>
+                <p>Gentle nudges that keep the whole team on track without anyone having to play the bad guy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works reveal" id="how-it-works">
+        <div class="section-header">
+            <h2>From day one to submission</h2>
+        </div>
+        <div class="step-flow-grid reveal stagger">
+            <div class="step-card card">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+                <h4>Create group</h4>
+                <p>Set up your workspace.</p>
+            </div>
+            <div class="step-card card">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Assign tasks</h4>
+                <p>Distribute the workload.</p>
+            </div>
+            <div class="step-card card">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <h4>Collaborate</h4>
+                <p>Work and communicate.</p>
+            </div>
+            <div class="step-card card">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h4>Validate</h4>
+                <p>Peer-review tasks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Showcase Section -->
+    <section class="showcase reveal" id="showcase"> 
+        <div class="showcase-grid">
+            <div class="showcase-main card reveal stagger">
+                <img src="assets/Screenshot 2026-06-02 001851.png" alt="FairShare Dashboard" class="img-placeholder">
+            </div>
+            <div class="showcase-side">
+                <div class="card reveal stagger image-card"><img src="assets/Screenshot 2026-06-02 001902.png" alt="Task View" class="img-placeholder"></div>
+                <div class="card reveal stagger image-card"><img src="assets/Screenshot 2026-06-02 001915.png" alt="Contribution Graph" class="img-placeholder"></div>
+                <div class="card reveal stagger image-card"><img src="assets/Screenshot 2026-06-02 001921.png" alt="Validation View" class="img-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-bottom reveal">
+        <div class="cta-card card">
+            <h2>Ready to stop hating group projects?</h2>
+            <p>Join early access and make your next assignment a breeze.</p>
+            <br>
+            <a href="signup.html" class="btn btn-primary btn-large">Start using FairShare</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="reveal">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">FairShare.</span>
+                <p>Designed for better student collaboration.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FairShare. Built by students, for students.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
