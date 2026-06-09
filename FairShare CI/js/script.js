@@ -1,3 +1,7 @@
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     
     // 1. NAVBAR SCROLL INTERACTION (Slower, Apple-like threshold)

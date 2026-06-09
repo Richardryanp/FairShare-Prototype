@@ -573,3 +573,28 @@ body.dark-mode #features .feature-card p,
 body.dark-mode .step-card p {
     color: rgba(255, 255, 255, 0.85) !important;
 }
+
+/* Override Tema Gelap Landing Page */
+body.dark-mode {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-section: #0B0F19;
+    --card-bg: #1E293B;
+    --border-color: #334155;
+    --border-hover: #475569;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --btn-primary-bg: #F8FAFC;
+    --btn-primary-text: #0F172A;
+    --btn-primary-hover: #E2E8F0;
+    
+    background: linear-gradient(180deg, #0F172A 0%, #0B0F19 48%, #0F172A 100%) !important;
+}
+body.dark-mode .step-icon {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+body.dark-mode .navbar.scrolled {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}

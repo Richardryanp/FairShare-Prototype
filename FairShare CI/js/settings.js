@@ -151,19 +151,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Ganti baris 154-170 dengan ini:
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
-    
     if (darkModeToggle) {
-        // 1. Cek local storage saat halaman settings dimuat
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.checked = true;
-        } else {
-            darkModeToggle.checked = false;
-        }
+        // 1. Sinkronisasi status checkbox
+        darkModeToggle.checked = document.body.classList.contains('dark-mode');
 
-        // 2. Event Listener saat toggle switch diklik
+        // 2. Event listener
         darkModeToggle.addEventListener('change', () => {
             if (darkModeToggle.checked) {
                 document.body.classList.add('dark-mode');
@@ -174,4 +169,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+}); // <-- Pastikan baris ini menutup dengan rapi menggunakan ");"

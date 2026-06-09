@@ -916,11 +916,43 @@ body.dark-mode .header-avatar {
     background: var(--border-hover) !important;
     color: var(--text-primary) !important;
 }
-body.dark-mode .dropdown-link-item p {
-    color: var(--text-primary) !important;
-}
+/* Ganti menjadi ini: */
+body.dark-mode .header-dropdown,
 body.dark-mode .toast-notification {
     background: var(--bg-elevated) !important;
     color: var(--text-primary) !important;
     border-color: var(--border-subtle) !important;
+}
+
+/* =========================================================
+   PERBAIKAN DROPDOWN USER INFO & NOTIFICATIONS (DARK MODE)
+   ========================================================= */
+body.dark-mode .dropdown-link-item p,
+body.dark-mode .dropdown-link-item p strong {
+    color: var(--text-primary) !important;
+}
+body.dark-mode .dropdown-link-item small {
+    color: var(--text-secondary) !important;
+}
+body.dark-mode .dropdown-link-item span {
+    color: var(--status-progress) !important;
+}
+body.dark-mode .dropdown-caption {
+    color: var(--text-secondary) !important;
+}
+
+/* Pastikan tombol Sign Out tetap berwarna merah di Dark Mode */
+body.dark-mode .dropdown-link-item[style*="var(--status-late)"] p {
+    color: var(--status-late) !important;
+}
+/* Mengembalikan kontras penuh warna biru deadline saat Dark Mode */
+body.dark-mode .date-box.box-blue .day {
+    color: var(--status-progress) !important;
+}
+/* Efek hover list task di Dark Mode */
+body.dark-mode .task-item {
+    background: rgba(255, 255, 255, 0.02);
+}
+body.dark-mode .task-item:hover {
+    background: rgba(255, 255, 255, 0.05);
 }

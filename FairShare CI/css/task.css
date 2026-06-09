@@ -631,3 +631,13 @@ body.dark-mode .filter-btn.text-red.active .task-count {
     color: #FFFFFF !important;
     background-color: var(--status-late) !important;
 }
+
+/* =========================================================
+   PERBAIKAN WARNA TANGGAL HARI INI DI KALENDER (DARK MODE)
+   ========================================================= */
+body.dark-mode .cal-cell.is-today,
+body.dark-mode .cal-cell.today {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.6) !important;
+}
