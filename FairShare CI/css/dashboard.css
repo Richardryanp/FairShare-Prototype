@@ -848,3 +848,79 @@ input::placeholder,
 textarea::placeholder {
     color: #94A3B8 !important;
 }
+
+/* =========================================================
+   UNIFIED DARK MODE VARIABLE MAPPING
+   ========================================================= */
+body.dark-mode {
+    /* Backgrounds */
+    --bg-primary: #0F172A;        /* Slate 900 */
+    --bg-elevated: #1E293B;       /* Slate 800 */
+    --card-bg: rgba(30, 41, 59, 0.95);
+    --bg-main: #0F172A;
+    --bg-card: #1E293B;
+    
+    /* Borders */
+    --border-subtle: #334155;
+    --border-hover: #475569;
+    --border-color: #334155;
+    --border-focus: rgba(255, 255, 255, 0.45);
+
+    /* Text Colors */
+    --text-primary: #F8FAFC;      /* Terang */
+    --text-secondary: #94A3B8;    /* Muted */
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    
+    /* Buttons */
+    --btn-primary-bg: #F8FAFC;
+    --btn-primary-text: #0F172A;  /* Teks hitam di atas tombol putih saat dark mode */
+    --btn-primary-hover: #E2E8F0;
+    --btn-secondary-bg: #1E293B;
+    --btn-secondary-border: #334155;
+    --btn-secondary-text: #F8FAFC;
+    --btn-secondary-hover: #334155;
+
+    /* Statuses */
+    --status-done: #10B981;
+    --status-progress: #3B82F6;
+    --status-warning: #F59E0B;
+    --status-late: #EF4444;
+}
+
+/* Penyesuaian grid background mode gelap */
+body.dark-mode .bg-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Overrides khusus Dashboard */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-subtle) !important;
+}
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--text-secondary) !important;
+}
+body.dark-mode .task-delete-btn {
+    color: #6B7280 !important;
+}
+body.dark-mode .task-delete-btn:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+body.dark-mode .header-avatar {
+    background: var(--border-hover) !important;
+    color: var(--text-primary) !important;
+}
+body.dark-mode .dropdown-link-item p {
+    color: var(--text-primary) !important;
+}
+body.dark-mode .toast-notification {
+    background: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-subtle) !important;
+}

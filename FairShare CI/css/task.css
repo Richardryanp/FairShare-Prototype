@@ -621,3 +621,13 @@ input::placeholder,
 textarea::placeholder {
     color: #94A3B8 !important;
 }
+
+/* Overrides khusus Tasks */
+body.dark-mode .filter-btn.active .task-count {
+    color: var(--bg-primary) !important;
+    background-color: var(--text-primary) !important;
+}
+body.dark-mode .filter-btn.text-red.active .task-count {
+    color: #FFFFFF !important;
+    background-color: var(--status-late) !important;
+}

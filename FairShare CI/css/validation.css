@@ -169,3 +169,21 @@ input::placeholder,
 textarea::placeholder {
     color: #94A3B8 !important;
 }
+
+/* Overrides khusus Validation */
+body.dark-mode .filter-btn.active {
+    background-color: var(--text-primary) !important;
+    color: var(--bg-primary) !important;
+}
+body.dark-mode .msg-user {
+    background-color: var(--status-progress) !important;
+    color: #FFFFFF !important;
+}
+body.dark-mode .chat-input input {
+    color: #FFFFFF !important;
+    background-color: var(--bg-primary) !important;
+}
+body.dark-mode .prompt-chip:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}

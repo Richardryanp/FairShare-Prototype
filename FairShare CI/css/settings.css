@@ -344,3 +344,45 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+/* Overrides khusus Settings */
+body.dark-mode .settings-content {
+    background: var(--bg-elevated) !important;
+    border-color: var(--border-subtle) !important;
+}
+body.dark-mode .settings-tab {
+    color: var(--text-secondary);
+}
+body.dark-mode .settings-tab:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #FFFFFF !important;
+}
+body.dark-mode .settings-tab.active {
+    background: #334155 !important;
+    color: #FFFFFF !important;
+}
+body.dark-mode .avatar-lg {
+    background: #334155 !important;
+    color: #FFFFFF !important;
+}
+body.dark-mode .btn-text {
+    color: #9CA3AF !important;
+}
+body.dark-mode .btn-text:hover {
+    color: #FFFFFF !important;
+}
+body.dark-mode .btn-primary {
+    background-color: var(--btn-primary-bg) !important;
+    color: var(--btn-primary-text) !important;
+}
+body.dark-mode .btn-primary.btn-success {
+    background-color: var(--status-done) !important;
+    color: white !important;
+}
+body.dark-mode .info-card {
+    background: var(--bg-primary) !important;
+    border-color: var(--border-subtle) !important;
+}
+body.dark-mode .info-row {
+    border-bottom-color: var(--border-subtle) !important;
+}
