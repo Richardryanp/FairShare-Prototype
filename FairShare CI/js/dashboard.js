@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="task-actions">
                         <span class="badge badge-progress">In Progress</span>
-                        <div class="avatar-sm" title="Assigned to Sauky">S</div>
+                        <div class="avatar-sm" title="Assigned to Yofi">Y</div>
                         <button class="task-delete-btn" title="Delete Task">&times;</button>
                     </div>
                 </a>
