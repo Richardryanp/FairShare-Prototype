@@ -53,6 +53,12 @@ textarea.form-input { height: auto; min-height: 80px; resize: vertical; }
 
 .divider { border: 0; height: 1px; background: var(--border-subtle); margin: var(--space-sm) 0; }
 
+/* Group Agreement */
+.agreement-section { gap: var(--space-md); }
+.agreement-header { gap: 4px; }
+.agreement-intro { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+.agreement-textarea { min-height: 72px; line-height: 1.5; font-size: 0.9rem; }
+
 /* Icon Upload Section */
 .icon-section { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
 .icon-upload-circle {

@@ -2,18 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // --- 1. UX Polish: Auto Focus & Validation ---
     const groupNameInput = document.getElementById('groupName');
+    const groupRulesInput = document.getElementById('groupRules');
+    const groupConsequencesInput = document.getElementById('groupConsequences');
     const submitBtn = document.getElementById('submitGroupBtn');
 
     // Auto-focus the main input on load
     groupNameInput.focus();
 
-    // Enable/Disable Create button based on Name
-    groupNameInput.addEventListener('input', () => {
-        if (groupNameInput.value.trim().length > 0) {
-            submitBtn.disabled = false;
-        } else {
-            submitBtn.disabled = true;
-        }
+    function isFormValid() {
+        return groupNameInput.value.trim().length > 0
+            && groupRulesInput.value.trim().length > 0
+            && groupConsequencesInput.value.trim().length > 0;
+    }
+
+    function updateSubmitState() {
+        submitBtn.disabled = !isFormValid();
+    }
+
+    [groupNameInput, groupRulesInput, groupConsequencesInput].forEach(input => {
+        input.addEventListener('input', updateSubmitState);
     });
 
 
@@ -115,8 +122,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const createForm = document.getElementById('createGroupForm');
     const toast = document.getElementById('successToast');
 
+    function parseLines(text) {
+        return text.split('\n').map(line => line.trim()).filter(Boolean);
+    }
+
     createForm.addEventListener('submit', (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
+
+        if (!isFormValid()) return;
+
+        const groupId = 'grp_' + Date.now().toString(36);
+        const groupData = {
+            id: groupId,
+            name: groupNameInput.value.trim(),
+            description: document.getElementById('groupDesc').value.trim(),
+            rules: parseLines(groupRulesInput.value),
+            consequences: parseLines(groupConsequencesInput.value),
+            invitedMembers: invitedMembers,
+            createdAt: new Date().toISOString(),
+            memberCount: invitedMembers.length + 1,
+            role: 'Leader'
+        };
+
+        const joined = JSON.parse(localStorage.getItem('fairshare_joined_groups') || '[]');
+        joined.unshift(groupData);
+        localStorage.setItem('fairshare_joined_groups', JSON.stringify(joined));
+        localStorage.setItem('fairshare_active_group_id', groupId);
+        localStorage.removeItem('fairshare_pending_group');
 
         // 1. Enter Loading State
         submitBtn.innerHTML = `Creating... <svg width="16" height="16" style="margin-left:8px; animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>`;
@@ -142,9 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
             createForm.style.pointerEvents = "none";
         }, 500);
 
-        // 3. Redirect to Dashboard
+        // 3. Redirect to Group Select
         setTimeout(() => {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'groups.html';
         }, 1800);
     });
 

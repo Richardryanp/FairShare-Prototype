@@ -67,7 +67,7 @@
                     <div class="avatar" title="Michelle">M</div>
                     <div class="user-info">
                         <span class="user-name">Michelle</span>
-                        <span class="user-role">HCI Group 4</span>
+                        <span class="user-role">CI Group 4</span>
                     </div>
                 </div>
             </div>
@@ -106,6 +106,28 @@
                     <div class="form-section">
                         <label for="groupDesc">Description <span class="muted">(Optional)</span></label>
                         <textarea id="groupDesc" class="form-input" rows="3" placeholder="Briefly describe the purpose of this group..."></textarea>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Group Agreement -->
+                    <div class="form-section agreement-section">
+                        <div class="agreement-header">
+                            <label class="label-large">Group Agreement</label>
+                            <p class="muted agreement-intro">Define the rules and consequences for your team. Members must accept these before joining.</p>
+                        </div>
+
+                        <div class="form-section">
+                            <label for="groupRules">Group Rules <span class="text-red">*</span></label>
+                            <textarea id="groupRules" class="form-input agreement-textarea" rows="3" placeholder="e.g. Complete all tasks before the deadline" required></textarea>
+                            <span class="helper-text">Write one rule per line. These will be shown to members when they accept the invitation.</span>
+                        </div>
+
+                        <div class="form-section">
+                            <label for="groupConsequences">Consequences <span class="text-red">*</span></label>
+                            <textarea id="groupConsequences" class="form-input agreement-textarea" rows="3" placeholder="e.g. Late tasks will be reassigned" required></textarea>
+                            <span class="helper-text">Write one consequence per line. Members must acknowledge these before joining.</span>
+                        </div>
                     </div>
 
                     <hr class="divider">

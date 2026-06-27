@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorBanner.classList.add('show');
             } else {
                 // Success
-                window.location.href = 'dashboard.html';
+                window.location.href = 'groups.html';
             }
         }, 1200);
     });

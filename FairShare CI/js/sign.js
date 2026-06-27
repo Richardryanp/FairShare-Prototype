@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showError('This email is already registered.');
             } else {
                 // Success route
-                window.location.href = 'dashboard.html';
+                window.location.href = 'groups.html';
             }
         }, 1200);
     });
